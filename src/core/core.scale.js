@@ -926,6 +926,14 @@ module.exports = Element.extend({
 				context.textBaseline = 'middle';
 				context.textAlign = itemToDraw.textAlign;
 
+				if (optionTicks.beforeDraw) {
+					optionTicks.beforeDraw({
+						context,
+						itemToDraw,
+						index: itemToDrawIndex
+					});
+				}
+
 				var label = itemToDraw.label;
 				var y = itemToDraw.textOffset;
 				if (helpers.isArray(label)) {
